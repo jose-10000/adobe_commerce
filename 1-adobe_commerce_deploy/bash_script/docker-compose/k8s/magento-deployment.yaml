@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: magento
+  name: magento
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: magento
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.28.0 (c4137012e)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/k8s-default: "true"
+        io.kompose.service: magento
+    spec:
+      containers:
+        - env:
+            - name: ALLOW_EMPTY_PASSWORD
+              value: "yes"
+            - name: ELASTICSEARCH_HOST
+              value: elasticsearch
+            - name: ELASTICSEARCH_PORT_NUMBER
+              value: "9200"
+            - name: MAGENTO_DATABASE_HOST
+              value: mariadb
+            - name: MAGENTO_DATABASE_NAME
+              value: bitnami_magento
+            - name: MAGENTO_DATABASE_PORT_NUMBER
+              value: "3306"
+            - name: MAGENTO_DATABASE_USER
+              value: bn_magento
+            - name: MAGENTO_HOST
+              value: localhost
+          image: docker.io/bitnami/magento:2
+          name: magento
+          ports:
+            - containerPort: 8080
+            - containerPort: 8443
+          resources: {}
+          volumeMounts:
+            - mountPath: /bitnami/magento
+              name: magento-data
+      restartPolicy: Always
+      volumes:
+        - name: magento-data
+          persistentVolumeClaim:
+            claimName: magento-data
+status: {}

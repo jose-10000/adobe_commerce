@@ -10,10 +10,15 @@ variable "aws_profile" {
   default = "terraform-course"
 }
 
+variable "configuration" {
+  description = "The total configuration, List of Objects/Dictionary"
+  default = [{}]
+}
+
 # Instance
 variable "instance_name" {
   description = "Name of the instance to be created"
-  default     = "adobe-commerce"
+  default     = "Rancher-Server"
 }
 
 variable "instance_type" {
@@ -22,17 +27,23 @@ variable "instance_type" {
 
 variable "subnet_id" {
   description = "The VPC subnet the instance(s) will be created in"
-  default     = "subnet-adobe-commerce"
+  default     = "subnet-Rancher-Server"
 }
 
 variable "ami_id" {
   description = "The AMI to use"
-  default     = "ami-01dd271720c1ba44f" # Ubuntu 22.04 LTS // eu-west-1
+  # default     = "ami-0c90138cdc75f84d2"  // Rancher-Ubuntu-22.04-LTS // eu-west-1
+  default     = "ami-01dd271720c1ba44f" # Ubuntu 22.04 LTS // eu-west-1    
+}
+
+variable "ami_id2" {
+  description = "The AMI to use"
+  default     = "ami-01dd271720c1ba44f" # Ubuntu 22.04 LTS // eu-west-1    
 }
 
 variable "number_of_instances" {
   description = "number of instances to be created"
-  default     = 1
+  default     = 3
 }
 
 # VPC and subnet.
@@ -55,17 +66,17 @@ variable "public_key_path" {
 
 variable "environment_tag" {
   description = "Environment tag"
-  default     = "Production"
+  default     = "dev"
 }
 
 # Security group
 variable "ingressports" {
   type    = list(number)
-  default = [8080, 22, 80, 9200]
+  default = [8080, 22, 80, 443]
 }
 
 variable "ingressports_udp" {
   type    = list(number)
-  default = [443, 8080]
+  default = [443]
 }
 
