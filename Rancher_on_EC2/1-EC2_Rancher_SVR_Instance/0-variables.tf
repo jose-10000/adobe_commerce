@@ -17,8 +17,8 @@ variable "instance_name" {
 }
 
 variable "instance_type" {
-  default = "t3.medium" # t3.medium (2 vCPU, 4 GB RAM). Next best is t3.large (2 vCPU, 8 GB RAM)
-  #default = "t3.xlarge" # t3.xlarge (4 vCPU, 16 GB RAM). Next best is t3.2xlarge (4 vCPU, 32 GB RAM)
+  #default = "t3.medium" # t3.medium (2 vCPU, 4 GB RAM). Next best is t3.large (2 vCPU, 8 GB RAM)
+  default = "t3.xlarge" # t3.xlarge (4 vCPU, 16 GB RAM). Next best is t3.2xlarge (4 vCPU, 32 GB RAM)
 }
 
 variable "instance_type2" {
