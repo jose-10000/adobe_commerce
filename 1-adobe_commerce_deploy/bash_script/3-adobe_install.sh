@@ -32,7 +32,7 @@ chmod u+x bin/magento
 cd /var/www/my-magento-project2
 bin/magento setup:install \
 --base-url=http://magentoc.lcl \
---db-host=localhost \
+--db-host=my-release-mariadb:3306 \
 --db-name=magento3 \
 --db-user=magento3 \
 --db-password=#Magento3 \

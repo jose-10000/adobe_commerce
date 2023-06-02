@@ -16,7 +16,7 @@ php bin/magento module:disable Magento_TwoFactorAuth
 # bin/magento cron:install --force # use --force to rewrite existing cron job
 
 # Install sample data
-bin/magento setup:perf:generate-fixtures /var/www/my-magento-project/setup/performance-toolkit/profiles/ce/small.xml
+bin/magento setup:perf:generate-fixtures /bitnami/magento/setup/performance-toolkit/profiles/ce/small.xml
 
 # If you get error like this: "SQLSTATE[HY000]: General error:" run in MySQL with root user
     set global log_bin_trust_function_creators=1;

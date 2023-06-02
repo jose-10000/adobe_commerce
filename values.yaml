@@ -1,0 +1,28 @@
+resources:
+  ## Example:
+  ## limits:
+  ##    cpu: 250m
+  ##    memory: 256Mi
+  limits: 
+    cpu: 1250m
+    memory: 2048Mi
+  ## Examples:
+  ## requests:
+  ##    cpu: 250m
+  ##    memory: 256Mi
+  requests:
+    cpu: 250m
+    memory: 512Mi
+
+
+
+containerPorts:
+  http: 8080
+  https: 8443
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 6
+  targetCPU: 90
+#   targetMemory: 90
