@@ -17,13 +17,18 @@ variable "instance_name" {
 }
 
 variable "instance_type" {
-  default = "t3.medium" # t3.medium (2 vCPU, 4 GB RAM). Next best is t3.large (2 vCPU, 8 GB RAM)
+  default = "t2.micro" # t3.medium (2 vCPU, 4 GB RAM). Next best is t3.large (2 vCPU, 8 GB RAM)
   #default = "t3.xlarge" # t3.xlarge (4 vCPU, 16 GB RAM). Next best is t3.2xlarge (4 vCPU, 32 GB RAM)
 }
 
 variable "instance_type2" {
+  default = "t3.medium" # t3.medium (2 vCPU, 4 GB RAM). Next best is t3.large (2 vCPU, 8 GB RAM)
+  #default = "t3.xlarge" # t3.xlarge (4 vCPU, 16 GB RAM). Next best is t3.2xlarge (4 vCPU, 32 GB RAM)
+}
+
+variable "instance_type3" {
   #default = "t3.medium" # t3.medium (2 vCPU, 4 GB RAM). Next best is t3.large (2 vCPU, 8 GB RAM)
-  default = "t3.medium" # t3.xlarge (4 vCPU, 16 GB RAM). Next best is t3.2xlarge (4 vCPU, 32 GB RAM)
+  default = "t3.xlarge" # t3.xlarge (4 vCPU, 16 GB RAM). Next best is t3.2xlarge (4 vCPU, 32 GB RAM)
 }
 
 variable "subnet_id" {
@@ -33,7 +38,7 @@ variable "subnet_id" {
 
 variable "ami_id" {
   description = "The AMI to use"
-  default = "ami-0d31449d0dd5f363f" # Debian 11 (Bullseye) // eu-west-1
+  default = "ami-0d31449d0dd5f363f"
   #default     = "ami-01dd271720c1ba44f" # Ubuntu 22.04 LTS // eu-west-1
 }
 
@@ -73,20 +78,11 @@ variable "environment_tag" {
 # Security group
 variable "ingressports" {
   type    = list(number)
-  default = [8080, 22, 80, 443, 2376, 2379, 6443, 8472, 9099, 10250, 10254]
+  default = [8080, 22, 80, 443, 6443, 2379, 2380, 10250, 10251, 10252, 10255, 30000-32767]
 }
 
 variable "ingressports_udp" {
   type    = list(number)
-  default = [443]
+  default = [443, 8080]
 }
 
-variable "volume_size" {
-  description = "Volume size"
-  default     = 12
-}
-
-variable "volume_size2" {
-  description = "Volume size"
-  default     = 50
-}

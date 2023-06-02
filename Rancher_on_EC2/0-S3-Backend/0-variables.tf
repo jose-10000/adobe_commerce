@@ -21,7 +21,7 @@ variable "s3_tfstate" {
     bucket = string
   })
   default = {
-    bucket = "terraform-state-2023-21-05"
+    bucket = "terraform-state-2023-june"
   }
 }
 
